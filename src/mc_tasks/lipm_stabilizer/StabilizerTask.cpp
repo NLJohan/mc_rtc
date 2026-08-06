@@ -623,8 +623,8 @@ void StabilizerTask::setExternalWrenches(const std::vector<std::string> & surfac
      && !(c_.extWrench.addExpectedCoMOffset || c_.extWrench.modifyCoMErr || c_.extWrench.modifyZMPErr
           || c_.extWrench.modifyZMPErrD))
   {
-    mc_rtc::log::warning(
-        "[StabilizerTask] external wrenches are set, but the configurations for handling them are invalid.");
+    // mc_rtc::log::warning(
+    //     "[StabilizerTask] external wrenches are set, but the configurations for handling them are invalid.");
   }
 
   extWrenches_.clear();
@@ -633,9 +633,9 @@ void StabilizerTask::setExternalWrenches(const std::vector<std::string> & surfac
     extWrenches_.push_back({targetWrenches[i], sva::ForceVecd::Zero(), gains[i], surfaceNames[i]});
     if(!robot().surfaceHasIndirectForceSensor(surfaceNames[i]))
     {
-      mc_rtc::log::warning(
-          "[StabilizerTask] surface {} does not have force sensor. The target force is used as the measured force.",
-          surfaceNames[i]);
+      // mc_rtc::log::warning(
+      //     "[StabilizerTask] surface {} does not have force sensor. The target force is used as the measured force.",
+      //     surfaceNames[i]);
     }
   }
 
