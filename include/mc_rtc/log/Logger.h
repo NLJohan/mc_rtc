@@ -214,7 +214,7 @@ public:
     {
       if(!overwrite)
       {
-        log::error("Already logging an entry named {}", name);
+        // log::error("Already logging an entry named {}", name);
         return;
       }
       else

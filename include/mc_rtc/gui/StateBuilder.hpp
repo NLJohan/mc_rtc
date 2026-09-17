@@ -53,8 +53,8 @@ void StateBuilder::addElementImpl(void * source,
                          [&element](const ElementStore & el) { return el().name() == element.name(); });
   if(it != cat.elements.end())
   {
-    log::error("An element named {} already exists in {}", element.name(), cat2str(category));
-    log::warning("Discarding request to add this element");
+    // log::error("An element named {} already exists in {}", element.name(), cat2str(category));
+    // log::warning("Discarding request to add this element");
     return;
   }
   cat.elements.emplace_back(element, cat, stacking, source);
