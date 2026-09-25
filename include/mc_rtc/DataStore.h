@@ -158,6 +158,15 @@ struct DataStore
   }
 
   /**
+   * @brief Returns the type name of a stored object
+   * @param name Name of the stored object
+   * @return Type name of the stored object, as reported at creation time
+   *
+   * @throws std::runtime_error when no object named `name` exists
+   */
+  inline std::string type(const std::string & name) const { return get_data(name).type(); }
+
+  /**
    * @brief Get a reference to an object on the datastore
    * @param name Name of the stored oject
    * @return Reference to the stored object

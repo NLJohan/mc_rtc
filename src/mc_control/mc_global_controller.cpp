@@ -285,6 +285,13 @@ void MCGlobalController::reset(const std::map<std::string, std::vector<double>> 
   config.load_controllers_configs();
   AddController(current_ctrl);
   controller_ = controllers[current_ctrl].get();
+  // Seed raw encoder values before init() runs resetObserverPipelines():
+  // EncoderObserver requires robot().encoderValues() non-empty on its first
+  // post-reset run(), and initEncoders() only sets mbc().q, not this buffer.
+  for(const auto & kv : initqs)
+  {
+    if(controller().robots().hasRobot(kv.first)) { controller().robot(kv.first).data()->encoderValues = kv.second; }
+  }
   init(initqs, initAttitudes, true);
 }
 
