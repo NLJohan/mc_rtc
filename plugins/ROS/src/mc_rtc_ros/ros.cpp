@@ -271,7 +271,7 @@ void RobotPublisherImpl::init(const mc_rbdyn::Robot & robot, bool use_real)
 
 void RobotPublisherImpl::update(double, const mc_rbdyn::Robot & robot)
 {
-  if(&robot != previous_robot) { init(robot, use_real); }
+  if(previous_robot == nullptr || previous_robot->name() != robot.name()) { init(robot, use_real); }
 
   if(++seq % skip) { return; }
 
